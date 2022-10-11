@@ -2,9 +2,12 @@
 import './App.css';
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useContext } from 'react';
+import AppContext from './context/AppContext';
 
 
 function App() {
+  let appContext = useContext(AppContext)
 
   let formik=useFormik({
     initialValues:{
