@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import AppContext from '../context/AppContext';
+import toast from 'react-hot-toast';
 
 
 export default function Login() {
+    let appContext = useContext(AppContext)
   let formik=useFormik({
     initialValues:{
       name:"",
@@ -11,6 +14,14 @@ export default function Login() {
     },
     onSubmit:function(values){
       console.log(values);
+      console.log(appContext.credential.user_name)
+     if(values.name === appContext.credential.user_name && values.password === appContext.credential.password){
+        toast.success('Welcome')
+        appContext.setUserLoggedIn(true)
+     }else{
+        toast.error("Wrong Credentials!")
+        appContext.setUserLoggedIn(false)
+     }
   },
     validationSchema:Yup.object({
       name:Yup.string().required('Full Name is required').matches(/^[aA-zZ\s]+$/,"Only alphabets are allowed"),
