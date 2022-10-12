@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Logo from '../Images/logo2.PNG'
 import insta from '../Images/insta_svg.PNG'
 import facebook from '../Images/fb_svg.PNG'
 import twitter from '../Images/twitter_svg.PNG'
 import linkdin from '../Images/linkdin.PNG'
 import {Link} from 'react-router-dom'
+import AppContext from '../context/AppContext'
 
 
 export default function Dashboard() {
+  let appContext = useContext(AppContext)
   return (
     <>
         <header className=" w-auto h-20 bg-black  text-white flex flex-row justify-between z-10">
             <img src={Logo} className='w-30 h-full ml-10'/>
-            <button className='mr-10 h-1/2 mt-4 p-2 hover:text-lg hover:rounded-2xl  hover:bg-gray-500'>LogOut</button>
+            <button className='mr-10 h-1/2 mt-4 p-2 hover:text-lg hover:rounded-2xl  hover:bg-gray-500' onClick={()=>{appContext.setUserLoggedIn(false)}}>LogOut</button>
         </header>
         <div className="flex flex-wrap ">
         {/* <!-- Side bar --> */}
