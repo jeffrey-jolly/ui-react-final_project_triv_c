@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import { Route, Routes } from 'react-router-dom/dist';
 import { Toaster } from 'react-hot-toast';
+import Editors from './pages/Editor';
 
 
 
@@ -16,6 +17,7 @@ function App() {
     <>
     <Toaster/>
       <Routes>
+        <Route path="/create" element={<Editors/>}/>
         {appContext.userLoggedIn ? (<Route index element={<Dashboard />} />) : (<Route index element={<Login />} />)}
       </Routes>
 

@@ -4,6 +4,7 @@ import insta from '../Images/insta_svg.PNG'
 import facebook from '../Images/fb_svg.PNG'
 import twitter from '../Images/twitter_svg.PNG'
 import linkdin from '../Images/linkdin.PNG'
+import {Link} from 'react-router-dom'
 
 
 export default function Dashboard() {
@@ -170,7 +171,8 @@ export default function Dashboard() {
                 <div className='border border-transparent shadow-lg mr-4 h-2/3 mt-4 p-8 rounded-md flex flex-col justify-between hover:shadow-2xl hover:border hover:bg-yellow-200'>
                   <div className="flex flex-row justify-between items-center">
                       <p>BLOGS</p>
-                      <button className='mr-2  p-1 w-fit h-fit text-sm text-white rounded-md bg-black hover:bg-gray-400'>CREATE POSTS</button>
+                      <Link to="/create">
+                      <button className='mr-2  p-1 w-fit h-fit text-sm text-white rounded-md bg-black hover:bg-gray-400'>CREATE POSTS</button></Link>
                   </div>
                   <div>
                       <p>posts</p>

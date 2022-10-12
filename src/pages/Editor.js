@@ -34,7 +34,7 @@ export default function Editors() {
                 categoryId:1,
                 authorId:1,
                 noOfLikes:23,
-                createdAt:`${current.getDate()}/${current.getMonth()}/${current.getFullYear()}`,
+                createdAt:`${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`,
                 body:`${values}`
 
             }),
