@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default function Dashboard() {
   return (
     <>
@@ -7,6 +8,7 @@ export default function Dashboard() {
             Header
         </header>
         <div>Dashboard</div>
+        
     </>
     
   )
