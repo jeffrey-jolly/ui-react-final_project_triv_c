@@ -101,6 +101,15 @@
       "createdAt": "12/9/2022",
       "body": "<p>Quill</p><p><strong>Quill</strong></p>",
       "id": 12
+    },
+    {
+      "title": "Doc 2",
+      "categoryId": 1,
+      "authorId": 1,
+      "noOfLikes": 23,
+      "createdAt": "12/10/2022",
+      "body": "<p>Qwerty</p>",
+      "id": 13
     }
   ]
 }
