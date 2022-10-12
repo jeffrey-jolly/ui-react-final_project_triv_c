@@ -17,8 +17,9 @@ function App() {
     <>
     <Toaster/>
       <Routes>
-        <Route path="/create" element={<Editors/>}/>
+        
         {appContext.userLoggedIn ? (<Route index element={<Dashboard />} />) : (<Route index element={<Login />} />)}
+        {appContext.userLoggedIn ? (<Route path="/create" element={<Editors/>}/>) : (<Route index element={<Login />} />)}
       </Routes>
 
     </>
