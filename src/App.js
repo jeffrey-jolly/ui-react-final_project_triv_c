@@ -9,6 +9,7 @@ import { Toaster } from 'react-hot-toast';
 import Editors from './pages/Editor';
 import HomePage from './pages/HomePage';
 import SinglePage from './pages/SinglePage'
+import EditPost from './pages/EditPost';
 
 
 
@@ -24,6 +25,8 @@ function App() {
         {appContext.userLoggedIn ? (<Route path="/create" element={<Editors/>}/>) : (<Route path='/login' element={<Login />} />)}
         <Route index element={<HomePage/>}/>
         <Route path='/single-page/:id' element={<SinglePage/>}/>
+        <Route path='/edit/:id' element={<EditPost/>}/>
+        
       </Routes>
 
     </>
