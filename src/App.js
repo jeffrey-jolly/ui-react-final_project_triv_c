@@ -23,7 +23,7 @@ function App() {
         {appContext.userLoggedIn ? (<Route path='/dashboard' element={<Dashboard />} />) : (<Route path='/login' element={<Login />} />)}
         {appContext.userLoggedIn ? (<Route path="/create" element={<Editors/>}/>) : (<Route path='/login' element={<Login />} />)}
         <Route index element={<HomePage/>}/>
-        <Route path='/single-page' element={<SinglePage/>}/>
+        <Route path='/single-page/:id' element={<SinglePage/>}/>
       </Routes>
 
     </>
