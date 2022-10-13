@@ -3,10 +3,12 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import AppContext from '../context/AppContext';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Login() {
     let appContext = useContext(AppContext)
+    const navigate = useNavigate()
     let formik=useFormik({
     initialValues:{
       name:"",
@@ -18,6 +20,7 @@ export default function Login() {
      if(values.name === appContext.credential.user_name && values.password === appContext.credential.password){
         toast.success('Welcome')
         appContext.setUserLoggedIn(true)
+        navigate('/dashboard')
      }else{
         toast.error("Wrong Credentials!")
         appContext.setUserLoggedIn(false)
