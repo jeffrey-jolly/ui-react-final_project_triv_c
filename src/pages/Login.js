@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import AppContext from '../context/AppContext';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
 
 export default function Login() {
     let appContext = useContext(AppContext)
@@ -34,6 +35,8 @@ export default function Login() {
   });
 
   return (
+    <div>
+      <Header/>
     <div className="flex p-6 rounded-lg shadow-lg bg-white max-w-sm my-20  mx-auto min-h-80 justify-center align-baseline">
   <form onSubmit={formik.handleSubmit}>
     <div className="form-group mb-6">
@@ -72,6 +75,7 @@ export default function Login() {
         className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Register</a>
     </p>
   </form>
+</div>
 </div>
     
 

@@ -4,6 +4,7 @@ import 'quill/dist/quill.snow.css';
 import { toast, Toaster } from 'react-hot-toast'
 import { useNavigate, useParams } from 'react-router-dom';
 import loadingGif from '../Images/tenor.gif'
+import Header from './Header';
 
 export default function Editors() {
     const { quill, quillRef } = useQuill();
@@ -88,8 +89,9 @@ export default function Editors() {
 
     return (
         
-
-        <div className=" flex flex-col gap-y-4 space-y-2 mt-10">
+        <div>
+            <Header/>
+        <div className=" flex flex-col gap-y-4 space-y-2 mt-7">
             {loading?(<><Loader/></>):(<>
                 <input className="mx-auto border border-slate-600 rounded-md px-auto w-1/2 h-10 text-center" type="text" placeholder="Add title" value={title}
                 onChange={(event) => {
@@ -118,6 +120,7 @@ export default function Editors() {
             </>)}
 
             
+        </div>
         </div>
 
     )

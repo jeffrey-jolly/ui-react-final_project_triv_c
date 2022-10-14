@@ -10,7 +10,7 @@ export default function Header(){
   return(
     <div>
         <header className=" w-auto h-14 bg-black  text-white flex flex-row justify-between items-center">
-            <img src={Logo} className='w-30 h-full ml-10'/>
+            <img src={Logo} className='w-30 h-full ml-10 cursor-pointer' onClick={()=>{navigate('/')}}/>
             <button className='mr-10 h-fit w-fit p-2 text-center border border-slate-50 rounded-full hover:rounded-full  hover:bg-gray-500'
              onClick={()=>{appContext.handleLoginStatus(false)
              navigate('/')}}>Logout</button>

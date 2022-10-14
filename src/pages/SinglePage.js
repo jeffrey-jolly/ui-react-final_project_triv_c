@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import AppContext from '../context/AppContext'
 import loadingGif from '../Images/tenor.gif'
+import Header from './Header'
 
 export default function SinglePage() {
     let { id } = useParams()
@@ -55,6 +56,7 @@ export default function SinglePage() {
 
     return (
         <div>
+            <Header/>
             {loading? (<Loader/>):(<>
                 
             <div className='p-8 border border-slate-100 m-10 rounded-lg h-fit  shadow-lg'>
@@ -76,8 +78,8 @@ export default function SinglePage() {
 
                 {blog.noOfLikes}</h3></div>
 
-            <Link to={`/edit/${id}`}><button className='border border-black rounded-lg ml-5 p-2 hover:bg-slate-200'>Edit</button></Link>  
-            <button className='border border-black rounded-lg ml-5 p-2 hover:bg-slate-200' onClick={deletePost}>Delete</button>
+            <Link to={`/edit/${id}`}><button className='border border-black rounded-full ml-5 p-2 hover:bg-slate-200'>Edit</button></Link>  
+            <button className='border border-black rounded-full ml-5 p-2 hover:bg-slate-200' onClick={deletePost}>Delete</button>
 
             </>)}
 

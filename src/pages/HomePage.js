@@ -45,7 +45,7 @@ export default function HomePage(){
             {loading?(<Loader/>):(
             <div>
                 <header className=" w-auto h-20 bg-black  text-white flex flex-row justify-between z-10">
-                <img src={Logo} className='w-30 h-full ml-10'/>
+                <img src={Logo} className='w-30 h-full mx-auto cursor-pointer'/>
                 </header>
                 <div className='flex flex-row items-center h-1/4 hover:scale-100 p-2'>
                     <div className="relative h-1/4 w-1/2 m-5 shadow-2xl bg-gray-200">
@@ -92,7 +92,7 @@ export default function HomePage(){
 function Loader() {
     return (
       <>
-        <img src={loadingGif} alt="Loading" className="w-24 mx-auto mt-12" />
+        <img src={loadingGif} alt="Loading" className="w-fit mx-auto mt-12" />
       </>
     );
 }
