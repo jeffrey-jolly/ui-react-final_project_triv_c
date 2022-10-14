@@ -11,7 +11,6 @@ import AppContext from '../context/AppContext'
 export default function Dashboard() {
   let appContext = useContext(AppContext)
   const navigate = useNavigate()
-
   console.log(appContext.userLoggedIn)
   return (
     <>
