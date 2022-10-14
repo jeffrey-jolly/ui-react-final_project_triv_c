@@ -43,7 +43,9 @@ useEffect(() => {
     <div className="max-h-fit">
         <header className=" w-auto h-20 bg-black  text-white flex flex-row justify-between z-10">
             <img src={Logo} className='w-30 h-full ml-10'/>
-            <button className='mr-10 h-1/2 mt-4 p-2 hover:text-lg hover:rounded-2xl  hover:bg-gray-500' onClick={()=>{appContext.setUserLoggedIn(false)}}>LogOut</button>
+            <button className='mr-10 h-1/2 mt-4 p-2 hover:text-lg hover:rounded-2xl  hover:bg-gray-500'
+             onClick={()=>{appContext.handleLoginStatus(false)
+             navigate('/')}}>LogOut</button>
         </header>
         <div className="flex flex-wrap ">
         <aside className="text-xl bg-black h-full w-1/6 shadow-2xl text-white  flex flex-col align-bottom justify-between ">
