@@ -12,7 +12,6 @@ import SinglePage from './pages/SinglePage'
 import EditPost from './pages/EditPost';
 
 
-
 function App() {
   let appContext = useContext(AppContext)
 
@@ -32,7 +31,6 @@ function App() {
     </>
 
   )
-
 
 }
 

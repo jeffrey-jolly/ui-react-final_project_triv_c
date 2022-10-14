@@ -5,7 +5,6 @@ import AppContext from '../context/AppContext';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-
 export default function Login() {
     let appContext = useContext(AppContext)
     const navigate = useNavigate()
@@ -19,7 +18,7 @@ export default function Login() {
       console.log(appContext.credential.user_name)
      if(values.name === appContext.credential.user_name && values.password === appContext.credential.password){
         toast.success('Welcome')
-        appContext.setUserLoggedIn(true)
+        appContext.handleLoginStatus(true)
         navigate('/dashboard')
      }else{
         toast.error("Wrong Credentials!")

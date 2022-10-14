@@ -37,11 +37,9 @@ export default function Header(props){
     
     </div>
 
-
         
           
         
-
 
           
           <div className='flex flex-col m-2 items-center justify-center '>
@@ -63,3 +61,4 @@ export default function Header(props){
     
     );
 }
+
