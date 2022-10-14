@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom'
 import AppContext from '../context/AppContext'
 import ProductCard from './ProductCard'
 import loadingGif from '../Images/tenor.gif'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function Dashboard() {
