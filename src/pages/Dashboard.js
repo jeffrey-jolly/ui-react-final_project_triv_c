@@ -6,9 +6,11 @@ import twitter from '../Images/twitter_svg.PNG'
 import linkdin from '../Images/linkdin.PNG'
 import {Link} from 'react-router-dom'
 import AppContext from '../context/AppContext'
-import ProductCard from './ProductCard'
+import ProductCardDash from './ProductCardDash'
 import loadingGif from '../Images/tenor.gif'
 import { useNavigate } from 'react-router-dom'
+import Header from './Header'
+
 
 
 export default function Dashboard() {
@@ -40,15 +42,16 @@ useEffect(() => {
 
   
   return (
-    <div className="max-h-fit">
-        <header className=" w-auto h-20 bg-black  text-white flex flex-row justify-between z-10">
+    <div className="min-h-screen">
+        {/* <header className=" w-auto h-20 bg-black  text-white flex flex-row justify-between">
             <img src={Logo} className='w-30 h-full ml-10'/>
             <button className='mr-10 h-1/2 mt-4 p-2 hover:text-lg hover:rounded-2xl  hover:bg-gray-500'
              onClick={()=>{appContext.handleLoginStatus(false)
              navigate('/')}}>LogOut</button>
-        </header>
-        <div className="flex flex-wrap ">
-        <aside className="text-xl bg-black h-full w-1/6 shadow-2xl text-white  flex flex-col align-bottom justify-between ">
+        </header> */}
+        <Header/>
+        <div className="flex flex-row w-full h-full">
+        <div className="text-xl bg-black h-90  w-1/6 shadow-2xl text-white  flex flex-col align-bottom justify-between ">
         
             <ul className="top-nav"> 
                 
@@ -105,22 +108,7 @@ useEffect(() => {
 
                
 
-            <ul className="bottom-nav flex flex-row justify-between text-white pl:2" >
-                {/* <li>
-                      <img src="https://clipartcraft.com/images/twitter-logo-dark-2.png" alt="twi"/>
-                </li>
-
-                <li>
-                      <img src="https://i.pinimg.com/originals/8a/77/05/8a770507298d728a1e3e039a0507dd8e.png" alt="int"/>
-                  </li> */}
-
-                {/* <li>
-                    <img src="https://i.pinimg.com/originals/38/63/61/38636148dc9bfd3655cdd3e71129c8a1.png" alt="fab"/>
-                </li>
-
-                <li>
-                  <img src="https://cdn.onlinewebfonts.com/svg/img_24845.png" alt="lin"/> 
-                </li> */}
+            <ul className="bottom-nav flex flex-row justify-between text-white pl-2" >
 
                 <li>
                   <img src={insta} className="w-8 pl-2 pb-2"/>
@@ -141,11 +129,11 @@ useEffect(() => {
             </ul>
             
 
-        </aside>
+        </div>
 
       <div className='w-5/6 max-h-screen '>
 
-      <div className='p-5'>
+      <div className='p-5 text-3xl font-bold'>
             DASHBOARD
           </div>
 
@@ -153,7 +141,7 @@ useEffect(() => {
           
 
         <section className=' max-w-7xl mx-auto flex flex-col justify-between w-1/4 '>
-                <div className='border border-transparent shadow-lg mr-4 mt-2 p-8  rounded-md flex flex-co justify-between hover:shadow-2xl hover:border hover:bg-yellow-200'>
+                <div className='border border-transparent shadow-lg mr-4 mt-4 p-8  rounded-md flex flex-co justify-between hover:shadow-2xl hover:border '>
                   <div className='flex flex-row'>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
@@ -171,13 +159,15 @@ useEffect(() => {
         </section>
 
         <section className=' max-w-7xl mx-auto flex flex-col  w-1/4 '>
-                <div className=' border border-transparent shadow-lg mr-4 mt-4 p-8  rounded-md flex flex-col justify-between hover:shadow-2xl hover:border hover:bg-yellow-200'>
+                <div className=' border border-transparent shadow-lg mr-4 mt-4 p-8  rounded-md flex flex-col justify-between hover:shadow-2xl hover:border'>
                   <div className='flex flex-row'>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 </svg>
 
-                    <p className='ml-2'>STATISTICS</p>
+
+                    <p className='ml-2'>VIEWS</p>
                   </div>
                   {/* <div>
                     <p>bye</p>
@@ -189,7 +179,7 @@ useEffect(() => {
         </section>
 
         <section className=' max-w-7xl mx-auto flex flex-col w-1/4 h-1/3 '>
-                <div className='border border-transparent shadow-lg mr-4 mt-4 p-8 rounded-md flex flex-col justify-between hover:shadow-2xl hover:border hover:bg-yellow-200'>
+                <div className='border border-transparent shadow-lg mr-4 mt-4 p-8 rounded-md flex flex-col justify-between hover:shadow-2xl hover:border '>
                   <div className='flex flex-row'>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
@@ -211,24 +201,24 @@ useEffect(() => {
         <div className='flex  flex-row justify-between w-full h-full'>
 
         <section className=' max-w-7xl mx-auto flex flex-col justify-between p-4 w-1/2 '>
-                <div className='border border-transparent shadow-lg mr-4 h-2/3 mt-4 p-8 rounded-md flex flex-col justify-between hover:shadow-2xl hover:border hover:bg-yellow-200'>
-                  <div className="flex flex-row justify-between items-center">
-                      <p>BLOGS</p>
+                <div className='border border-transparent shadow-lg mr-4 h-2/3 mt-4 p-8 bg-white rounded-md flex flex-col justify-between hover:shadow-2xl hover:border '>
+                  <div className="flex flex-row justify-between items-center ">
+                      <p className='font-bold text-2xl'>BLOGS</p>
                       <Link to="/create">
                       <button className='mr-2  p-1 w-fit h-fit text-sm text-white rounded-md bg-black hover:bg-gray-400'>CREATE POSTS</button></Link>
                   </div>
-                  <div>
-                      <p>
-                      <div className='max-w-7xl mx-auto flex max-h-fit flex-col bg-red-400 justify-between p-4 '>
+                  <div className=' h-full'>
+                      
+                      <div className='w-full mx-auto flex overflow-hidden hover:overflow-y-scroll flex-col justify-between h-full'>
                     {loading? (<Loader/>):(
                         blogs.map((blog)=>{
                             return(
-                            <ProductCard key={blog.id} blog={blog}/>
+                            <ProductCardDash key={blog.id} blog={blog}/>
                             )
                         })
                     )}
                 </div>
-                      </p>
+                      
                   </div>
                 </div>
                   
@@ -244,7 +234,7 @@ useEffect(() => {
         
 
         <section className=' max-w-7xl mx-auto flex flex-col p-4 w-1/2'>
-                <div className='border border-transparent shadow-lg mr-4 h-2/3 mt-4 p-8 rounded-md flex flex-col justify-between hover:shadow-2xl hover:border hover:bg-yellow-200'>
+                <div className='border border-transparent shadow-lg mr-4 h-2/3 mt-4 p-8 rounded-md flex flex-col justify-between hover:shadow-2xl hover:border'>
                   <div>
                     <p>hi</p>
                   </div>
