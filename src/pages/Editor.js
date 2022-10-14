@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
 import {toast, Toaster} from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom';
 
 export default function Editors() {
     const { quill, quillRef } = useQuill();
     const [values,setValues] = useState()
     let [title,setTitle] = useState("")
+    const navigate = useNavigate()
 
     React.useEffect(() => {
         if (quill) {
@@ -48,6 +50,7 @@ export default function Editors() {
         console.log(data,"this is data");
         setTitle("")
         toast.success("success")
+        navigate('/dashboard')
 
         
 
@@ -56,7 +59,7 @@ export default function Editors() {
     }
     
   return (
-    <div className=" flex flex-col gap-y-4 space-y-2 ">
+    <div className=" flex flex-col gap-y-4 space-y-2 mt-10">
 
         <input className="mx-auto border border-slate-600 rounded-md px-auto w-1/2 h-10 text-center" type="text" placeholder="Add title" value={title}
         onChange={(event)=>{

@@ -19,7 +19,7 @@ export default function Login() {
       console.log(appContext.credential.user_name)
      if(values.name === appContext.credential.user_name && values.password === appContext.credential.password){
         toast.success('Welcome')
-        appContext.setUserLoggedIn(true)
+        appContext.handleLoginStatus(true)
         navigate('/dashboard')
      }else{
         toast.error("Wrong Credentials!")
