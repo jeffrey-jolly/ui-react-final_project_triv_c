@@ -1,10 +1,8 @@
 import  parse  from 'html-react-parser'
 import React, { useContext, useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import AppContext from '../context/AppContext'
-import loadingGif from '../Images/tenor.gif'
 
 export default function SinglePage() {
     let { id } = useParams()
@@ -12,8 +10,6 @@ export default function SinglePage() {
     let [blog, setBlog] = useState([])
     const apiURL = "http://localhost:3000/posts/"
     let appContext = useContext(AppContext)
-    const navigate = useNavigate()
-    
 
     async function getNewBlog() {
         let response = await fetch(`${apiURL}` + id)
@@ -34,29 +30,10 @@ export default function SinglePage() {
         getNewBlog()
     }, [id])
 
-    async function deletePost(){
-        let response = await fetch(apiURL+id,{
-            method:"DELETE",
-
-        })
-        console.log(response)
-        navigate('/')
-        toast.success("Deleted the post")
-    }
-
-    
-    function Loader() {
-        return (
-          <>
-            <img src={loadingGif} alt="Loading" className="w-64 mx-auto mt-56" />
-          </>
-        );
-    }
-
     return (
         <div>
-            {loading? (<Loader/>):(<>
-                
+          
+            
             <div className='p-8 border border-slate-100 m-10 rounded-lg h-fit  shadow-lg'>
             <h1 className=" text-center text-6xl font-bold mt-3">{blog.title}</h1>
             <p className='text-right mr-10 text-light text-sm text-gray-400'>{blog.createdAt}</p>
@@ -66,6 +43,7 @@ export default function SinglePage() {
 
 
              <div className=" w-full ">
+                    {/*  dangerouslySetInnerHTML={{ __html: blog.body }} */}
                 {parse(`${blog.body}`)}
                 </div>
             </div>
@@ -77,10 +55,8 @@ export default function SinglePage() {
 
                 {blog.noOfLikes}</h3></div>
 
-            <Link to={`/edit/${id}`}><button className='border border-black rounded-lg ml-5 p-2 hover:bg-slate-200'>Edit</button></Link>  
-            <button className='border border-black rounded-lg ml-5 p-2 hover:bg-slate-200' onClick={deletePost}>Delete</button>
+            <Link to={`/edit/${id}`}><button>Edit</button></Link>  
 
-            </>)}
 
         </div>
     )
