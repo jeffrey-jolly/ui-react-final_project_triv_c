@@ -6,10 +6,12 @@ import Logo from '../Images/logo4.png'
 import back from '../Images/Leaves.jpg'
 import ProductCard from './ProductCard';
 import loadingGif from '../Images/tenor.gif'
-// import AppContext from '../Context/AppContext';
+import AppContext from '../context/AppContext';
 export default function HomePage(){
 
     let [loading,setLoading] = useState(true);
+
+    let appContext = useContext(AppContext)
 
     let [blogs, setBlogs] = useState([])
     const apiURL = "http://localhost:3000/posts"
