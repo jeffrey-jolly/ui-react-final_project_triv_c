@@ -1,0 +1,104 @@
+import React,{useState, useEffect} from "react";
+import '../App.css'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend,  Title} from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+ChartJS.register(ArcElement, Tooltip, Legend, Title);
+
+
+function PieChart()
+{
+  const [ids, setIds]= useState([]);
+  const [likes, setLikes]=useState([]);
+  useEffect( ()=>{
+    const getids=[];
+    const getLikes=[];
+   const getdata= async()=>{
+     const reqData= await fetch("http://localhost:3000/posts");
+     const resData= await reqData.json();
+     console.log(resData);
+     for(let i=0; i<resData.length; i++)
+     {
+      getids.push(resData[i].id);
+      getLikes.push(resData[i].noOfLikes);
+     }     
+     setIds(getids);
+     setLikes(getLikes);
+   }
+ getdata();
+  },[]);
+    
+    return(
+        <React.Fragment>
+            <div className="container-fluid">
+       {/*  <h1 className="mt-3 text-center">Posts with ids and likes</h1> */}
+            <div className="row">               
+                <div className="col-md-5  ml-5 wht ">
+            <Doughnut
+              // width={50}
+              // height={50}
+
+                data={{   
+                                                  
+                labels: ids,
+                datasets: [
+                    {
+                      label: '# of Likes',
+                      data: likes,
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 109, 64, 0.6)',
+                        'rgba(125, 169, 34, 0.8)',
+                        'rgba(225, 99, 251, 0.3)',
+                        'rgba(225, 99, 101, 0.4)',
+                        
+                      ],
+                      borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 109, 64, 0.6)',
+                        'rgba(125, 169, 34, 0.8)',
+                        'rgba(225, 99, 251, 0.3)',
+                        'rgba(225, 99, 101, 0.4)',                        
+                      ],
+                      borderWidth: 1,
+                      hoverOffset:20
+                    //  offset: [20,0,0,0,0,0,0,0,0,0]                     
+                    },
+                  ],
+            }}
+
+            options={{                 
+                responsive: true,  
+                //maintainAspectRatio: false,       
+                plugins:{
+                    title:{
+                        fontSize: 30,
+                      //  text:'Chart js tutorial',
+                        display: true ,
+                        font:{ size:20}   
+                    },
+                    legend:{
+                      labels:{
+                        font:{size:15}
+                      }
+                    }                        
+                 },                
+               }}    
+             />
+            </div>
+        </div>
+    </div>
+    </React.Fragment>
+    );
+
+}
+export default PieChart;

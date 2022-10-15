@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom'
 import Header from './Header'
 import parse from 'html-react-parser'
 import toast from 'react-hot-toast';
+import PieChart from './PieChart'
 
 
 
@@ -284,7 +285,7 @@ export default function Dashboard() {
               <section className=' max-w-7xl mx-auto flex flex-col p-4 w-1/2'>
                 <div className='border border-transparent shadow-lg mr-4 h-2/3 mt-4 p-8 rounded-md flex flex-col justify-between hover:shadow-2xl hover:border'>
                   <div>
-                    <p>hi</p>
+                    <p><PieChart/></p>
                   </div>
                   {/* <div>
                     <p>bye</p>
