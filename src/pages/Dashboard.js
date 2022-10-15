@@ -53,15 +53,16 @@ export default function Dashboard() {
   
   useEffect(() => {
     getNewBlog()
+   
   },[])
 
 
   return (
-    <div>
+    <div className=' max-h-screen'>
       <Header />
-      {loading?(<Loader/>):(<div>
+      {loading?(<Loader/>):(
         
-        <div className="min-h-screen">
+        <div className="max-h-screen">
         {/* <header className=" w-auto h-20 bg-black  text-white flex flex-row justify-between">
             <img src={Logo} className='w-30 h-full ml-10'/>
             <button className='mr-10 h-1/2 mt-4 p-2 hover:text-lg hover:rounded-2xl  hover:bg-gray-500'
@@ -219,7 +220,7 @@ export default function Dashboard() {
 
             <div className='flex  flex-row justify-between w-full h-full'>
 
-              <section className=' max-w-7xl mx-auto flex flex-col justify-between p-4 w-1/2 '>
+              <section className=' max-w-7xl mx-auto flex flex-col justify-between p-4 w-1/2'>
                 <div className='border border-transparent shadow-lg mr-4 h-2/3 mt-4 p-8 bg-white rounded-md flex flex-col justify-between hover:shadow-2xl hover:border '>
                   <div className="flex flex-row justify-between items-center ">
                     <p className='font-bold text-2xl'>BLOGS</p>
@@ -351,7 +352,7 @@ export default function Dashboard() {
         </main> */}
         </div>
       </div>
-</div>)}
+)}
   
 
     
