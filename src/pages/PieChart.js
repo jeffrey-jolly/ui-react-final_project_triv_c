@@ -29,7 +29,8 @@ function PieChart()
     
     return(
         <React.Fragment>
-            <div className="container-fluid">
+           <div className='border border-transparent shadow-lg  mt-4 p-1 rounded-md  justify-between '>
+            <div className="h-full w-full">
        {/*  <h1 className="mt-3 text-center">Posts with ids and likes</h1> */}
             <div className="row">               
                 <div className="col-md-5  ml-5 wht ">
@@ -69,7 +70,7 @@ function PieChart()
                         'rgba(225, 99, 251, 0.3)',
                         'rgba(225, 99, 101, 0.4)',                        
                       ],
-                      borderWidth: 1,
+                      borderWidth: 2,
                       hoverOffset:20
                     //  offset: [20,0,0,0,0,0,0,0,0,0]                     
                     },
@@ -82,13 +83,13 @@ function PieChart()
                 plugins:{
                     title:{
                         fontSize: 30,
-                      //  text:'Chart js tutorial',
+                       text:'Number of Likes/post',
                         display: true ,
-                        font:{ size:20}   
+                        font:{ size:22}   
                     },
                     legend:{
                       labels:{
-                        font:{size:15}
+                        font:{size:13}
                       }
                     }                        
                  },                
@@ -96,7 +97,8 @@ function PieChart()
              />
             </div>
         </div>
-    </div>
+        </div>
+        </div>
     </React.Fragment>
     );
 

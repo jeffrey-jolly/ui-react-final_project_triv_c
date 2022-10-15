@@ -17,6 +17,33 @@
       "createdAt": "14/10/2022",
       "body": "<p>heheh</p>",
       "id": 3
+    },
+    {
+      "title": "Dashboard",
+      "categoryId": 1,
+      "authorId": 1,
+      "noOfLikes": 23,
+      "createdAt": "15/10/2022",
+      "body": "<p>Completed</p>",
+      "id": 4
+    },
+    {
+      "title": "The",
+      "categoryId": 1,
+      "authorId": 1,
+      "noOfLikes": 23,
+      "createdAt": "15/10/2022",
+      "body": "<p>Happy mind!!!</p>",
+      "id": 5
+    },
+    {
+      "title": "Hello",
+      "categoryId": 1,
+      "authorId": 1,
+      "noOfLikes": 23,
+      "createdAt": "15/10/2022",
+      "body": "<p>How u doin???</p>",
+      "id": 6
     }
   ]
 }

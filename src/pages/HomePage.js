@@ -2,7 +2,7 @@ import React from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 import { useEffect,useContext } from 'react'
 import { useState } from 'react';
-import Logo from '../Images/logo2.PNG'
+import Logo from '../Images/logo4.png'
 import back from '../Images/Leaves.jpg'
 import ProductCard from './ProductCard';
 import loadingGif from '../Images/tenor.gif'
@@ -45,7 +45,7 @@ export default function HomePage(){
             {loading?(<Loader/>):(
             <div>
                 <header className=" w-auto h-20 bg-black  text-white flex flex-row justify-between z-10">
-                <img src={Logo} className='w-30 h-full mx-auto cursor-pointer'/>
+                <img src={Logo} className='w-30 h-full mx-auto cursor-pointer p-1'/>
                 </header>
                 <div className='flex flex-row items-center h-1/4 hover:scale-100 p-2'>
                     <div className="relative h-1/4 w-1/2 m-5 shadow-2xl bg-gray-200">
@@ -92,7 +92,7 @@ export default function HomePage(){
 function Loader() {
     return (
       <>
-        <img src={loadingGif} alt="Loading" className="w-fit mx-auto mt-12" />
+        <img src={loadingGif} alt="Loading" className="w-fit h-fit mx-auto mt-12" />
       </>
     );
 }

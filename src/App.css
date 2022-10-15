@@ -1,6 +1,14 @@
 .wht{
-  height:10vh; 
-  width:20vw;
+  height:fit-content; 
+  width:79.5%;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 3;
+}
+
+body{
+  background: #f9f9f9;
 }
 
 /*.App {
