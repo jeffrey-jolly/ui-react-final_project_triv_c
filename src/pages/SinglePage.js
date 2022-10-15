@@ -1,10 +1,7 @@
 import  parse  from 'html-react-parser'
 import React, { useContext, useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import AppContext from '../context/AppContext'
 import loadingGif from '../Images/tenor.gif'
 import Header from './Header'
 import { fetchThunkBlog } from '../redux/actions/counter.action'
@@ -14,13 +11,11 @@ export default function SinglePage() {
     let [loading, setLoading] = useState(true)
     let [blog, setBlog] = useState([])
     const apiURL = "http://localhost:3000/posts/"
-    let appContext = useContext(AppContext)
-    const navigate = useNavigate()
     
   
     const dispatch = useDispatch()
     
-    let post = useSelector(state => state)
+    let {post} = useSelector(state => state)
 
    
     async function getNewBlog() {
@@ -36,6 +31,7 @@ export default function SinglePage() {
     useEffect(() => {
         getNewBlog()
         dispatch(fetchThunkBlog(id))
+        console.log("effect",post)
     }, [])
 
     
