@@ -1,7 +1,18 @@
-import React from 'react'
+import{FETCH_BLOG} from './actionType'
 
-export default function counter() {
-  return (
-    <div>counter.reducer</div>
-  )
+const initialState ={
+  post:{}
+}
+
+export const fetchPost = (state=initialState,action)=>{
+  switch(action.type){
+    case FETCH_BLOG:
+      return{
+        ...state,
+        post:action.payload
+      }
+
+      default:
+        return state
+  }
 }

@@ -1,11 +1,13 @@
 import  parse  from 'html-react-parser'
 import React, { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import AppContext from '../context/AppContext'
 import loadingGif from '../Images/tenor.gif'
 import Header from './Header'
+import { fetchThunkBlog } from '../redux/actions/counter.action'
 
 export default function SinglePage() {
     let { id } = useParams()
@@ -15,35 +17,50 @@ export default function SinglePage() {
     let appContext = useContext(AppContext)
     const navigate = useNavigate()
     
+  
+    const dispatch = useDispatch()
+    
+    let {post} = useSelector(state => state)
 
-    async function getNewBlog() {
-        let response = await fetch(`${apiURL}` + id)
-        console.log("Response", response)
-        if (response.ok) {
-            let result = await response.json()
-            console.log("Result", result)
-            setBlog(result)
-            setLoading(false)
-
-        } else {
-            console.log("Error")
-            setLoading(false)
-        }
-
+   async function fetchBlog(){
+        setLoading(true)
+         dispatch(fetchThunkBlog(id))
+         console.log("Posts in single",post)
+        setLoading(false)
     }
-    useEffect(() => {
-        getNewBlog()
-    }, [id])
 
-    async function deletePost(){
-        let response = await fetch(apiURL+id,{
-            method:"DELETE",
+    useEffect(()=>{
+        fetchBlog()
+    },[])
 
-        })
-        console.log(response)
-        navigate('/')
-        toast.success("Deleted the post")
-    }
+    // async function getNewBlog() {
+    //     let response = await fetch(`${apiURL}` + id)
+    //     console.log("Response", response)
+    //     if (response.ok) {
+    //         let result = await response.json()
+    //         console.log("Result", result)
+    //         setBlog(result)
+    //         setLoading(false)
+
+    //     } else {
+    //         console.log("Error")
+    //         setLoading(false)
+    //     }
+
+    // }
+    // useEffect(() => {
+    //     getNewBlog()
+    // }, [id])
+
+    // async function deletePost(){
+    //     let response = await fetch(apiURL+id,{
+    //         method:"DELETE",
+
+    //     })
+    //     console.log(response)
+    //     navigate('/')
+    //     toast.success("Deleted the post")
+    // }
 
     
     function Loader() {
@@ -58,16 +75,16 @@ export default function SinglePage() {
         <div>
             <Header/>
             {loading? (<Loader/>):(<>
-                
+             
             <div className='p-8 border border-slate-100 m-10 rounded-lg h-fit  shadow-lg'>
-            <h1 className=" text-center text-6xl font-bold mt-3">{blog.title}</h1>
-            <p className='text-right mr-10 text-light text-sm text-gray-400'>{blog.createdAt}</p>
+            <h1 className=" text-center text-6xl font-bold mt-3">{post.title}</h1>
+            <p className='text-right mr-10 text-light text-sm text-gray-400'>{post.createdAt}</p>
 
 
 
 
              <div className=" w-full ">
-                {parse(`${blog.body}`)}
+                {parse(`${post.body}`)}
                 </div>
             </div>
             <div className='inline-flex ml-10 items-right'> 
@@ -76,11 +93,9 @@ export default function SinglePage() {
                 </svg>
                 <h3 >
 
-                {blog.noOfLikes}</h3></div>
+                {post.noOfLikes}</h3></div>
 
-            <Link to={`/edit/${id}`}><button className='border border-black rounded-full ml-5 p-2 hover:bg-slate-200'>Edit</button></Link>  
-            <button className='border border-black rounded-full ml-5 p-2 hover:bg-slate-200' onClick={deletePost}>Delete</button>
-
+          
             </>)}
 
         </div>

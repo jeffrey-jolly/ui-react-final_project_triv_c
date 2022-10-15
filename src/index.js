@@ -4,18 +4,22 @@ import './index.css';
 import App from './App';
 
 import AppState from './context/AppState'
-import {BrowserRouter} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import store from './redux/reducers/store';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AppState>
-    <BrowserRouter>
-    <App />
-    </BrowserRouter>
 
-  </AppState>
-  
+  <AppState>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+   </AppState>
+
 );
 
 

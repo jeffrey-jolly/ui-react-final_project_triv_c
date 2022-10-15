@@ -1,7 +1,1 @@
-import React from 'react'
-
-export default function actionType() {
-  return (
-    <div>actionType</div>
-  )
-}
+export const FETCH_BLOG = "FETCH_BLOG"
