@@ -21,16 +21,16 @@ export default function Header(){
         </header>
         <div className='bg-red-500 w-full h-full border border-transparent shadow-lg mr-4 mt-25 p-8 rounded-md flex flex-wrap justify-between hover:shadow-2xl hover:border hover:bg-green-200 hover:bg-opacity-70'>
                 <div className='flex '>
-                    ABHIRAMI CHANDRAMOULI
+                    ABIRAMI CHANDRAMOULI
                 </div>
                 <div>
-                    APOORVA ANAND
+                    APOORVA ANANTH P
                 </div>
                 <div>
                     JEFFREY JOLLY
                 </div>
                 <div>
-                    MUNDAN PUDUSHERRY DENSY JOY
+                    MUNDAN PUTHUSSERRY DENSY JOY
                 </div>
                 <div>
                     NAMITH N
