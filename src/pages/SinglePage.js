@@ -1,10 +1,7 @@
 import  parse  from 'html-react-parser'
 import React, { useContext, useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import AppContext from '../context/AppContext'
 import loadingGif from '../Images/tenor.gif'
 import Header from './Header'
 import { fetchThunkBlog } from '../redux/actions/counter.action'
@@ -14,8 +11,6 @@ export default function SinglePage() {
     let [loading, setLoading] = useState(true)
     let [blog, setBlog] = useState([])
     const apiURL = "http://localhost:3000/posts/"
-    let appContext = useContext(AppContext)
-    const navigate = useNavigate()
     
   
     const dispatch = useDispatch()
@@ -24,32 +19,20 @@ export default function SinglePage() {
 
    
     async function getNewBlog() {
+ 
         let response = await fetch(`${apiURL}` + id)
-        console.log("Response", response)
-        if (response.ok) {
-            dispatch(fetchThunkBlog(response))
-            console.log("Posts in single",post)
+        let data = await response.json()
+        console.log(data)
+        setBlog(data)
             setLoading(false)
-
-        } else {
-            console.log("Error")
-            setLoading(false)
-        }
+            console.log("inside single",post)   
 
     }
     useEffect(() => {
         getNewBlog()
-    }, [id])
-
-    // async function deletePost(){
-    //     let response = await fetch(apiURL+id,{
-    //         method:"DELETE",
-
-    //     })
-    //     console.log(response)
-    //     navigate('/')
-    //     toast.success("Deleted the post")
-    // }
+        dispatch(fetchThunkBlog(id))
+        console.log("effect",post)
+    }, [])
 
     
     function Loader() {
@@ -66,14 +49,14 @@ export default function SinglePage() {
             {loading? (<Loader/>):(<>
              
             <div className='p-8 border border-slate-100 m-10 rounded-lg h-fit  shadow-lg'>
-            <h1 className=" text-center text-6xl font-bold mt-3">{post.title}</h1>
-            <p className='text-right mr-10 text-light text-sm text-gray-400'>{post.createdAt}</p>
+            <h1 className=" text-center text-6xl font-bold mt-3">{blog.title}</h1>
+            <p className='text-right mr-10 text-light text-sm text-gray-400'>{blog.createdAt}</p>
 
 
 
 
              <div className=" w-full ">
-                {parse(`${post.body}`)}
+                {parse(`${blog.body}`)}
                 </div>
             </div>
             <div className='inline-flex ml-10 items-right'> 
@@ -82,7 +65,7 @@ export default function SinglePage() {
                 </svg>
                 <h3 >
 
-                {post.noOfLikes}</h3></div>
+                {blog.noOfLikes}</h3></div>
 
           
             </>)}
