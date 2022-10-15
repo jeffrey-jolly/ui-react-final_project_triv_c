@@ -1,7 +1,7 @@
 import{FETCH_BLOG} from './actionType'
 
 const initialState ={
-  post:{}
+  post:null
 }
 
 export const fetchPost = (state=initialState,action)=>{

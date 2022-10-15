@@ -22,35 +22,24 @@ export default function SinglePage() {
     
     let {post} = useSelector(state => state)
 
-   async function fetchBlog(){
-        setLoading(true)
-         dispatch(fetchThunkBlog(id))
-         console.log("Posts in single",post)
-        setLoading(false)
+   
+    async function getNewBlog() {
+        let response = await fetch(`${apiURL}` + id)
+        console.log("Response", response)
+        if (response.ok) {
+            dispatch(fetchThunkBlog(response))
+            console.log("Posts in single",post)
+            setLoading(false)
+
+        } else {
+            console.log("Error")
+            setLoading(false)
+        }
+
     }
-
-    useEffect(()=>{
-        fetchBlog()
-    },[])
-
-    // async function getNewBlog() {
-    //     let response = await fetch(`${apiURL}` + id)
-    //     console.log("Response", response)
-    //     if (response.ok) {
-    //         let result = await response.json()
-    //         console.log("Result", result)
-    //         setBlog(result)
-    //         setLoading(false)
-
-    //     } else {
-    //         console.log("Error")
-    //         setLoading(false)
-    //     }
-
-    // }
-    // useEffect(() => {
-    //     getNewBlog()
-    // }, [id])
+    useEffect(() => {
+        getNewBlog()
+    }, [id])
 
     // async function deletePost(){
     //     let response = await fetch(apiURL+id,{
