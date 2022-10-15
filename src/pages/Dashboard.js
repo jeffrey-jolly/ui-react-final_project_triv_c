@@ -58,20 +58,14 @@ export default function Dashboard() {
 
 
   return (
-    <div className=' max-h-screen'>
+    <div className=' max-h-screen bg-green-600'>
       <Header />
       {loading?(<Loader/>):(
         
-        <div className="max-h-screen">
-        {/* <header className=" w-auto h-20 bg-black  text-white flex flex-row justify-between">
-            <img src={Logo} className='w-30 h-full ml-10'/>
-            <button className='mr-10 h-1/2 mt-4 p-2 hover:text-lg hover:rounded-2xl  hover:bg-gray-500'
-             onClick={()=>{appContext.handleLoginStatus(false)
-             navigate('/')}}>LogOut</button>
-        </header> */}
+        
 
-        <div className="flex flex-row w-full h-full">
-          <div className="text-xl bg-black h-90  w-1/6 shadow-2xl text-white  flex flex-col align-bottom justify-between ">
+        <div className="flex flex-row w-full h-86 bg-red-200">
+          <div className="text-xl bg-black h-86  w-1/6 shadow-2xl text-white  flex flex-col align-bottom justify-between ">
 
             <ul className="top-nav text-sm">
 
@@ -351,7 +345,7 @@ export default function Dashboard() {
 
         </main> */}
         </div>
-      </div>
+  
 )}
   
 
