@@ -20,36 +20,23 @@ export default function SinglePage() {
   
     const dispatch = useDispatch()
     
-    let {post} = useSelector(state => state)
+    let post = useSelector(state => state)
 
    
     async function getNewBlog() {
+ 
         let response = await fetch(`${apiURL}` + id)
-        console.log("Response", response)
-        if (response.ok) {
-            dispatch(fetchThunkBlog(response))
-            console.log("Posts in single",post)
+        let data = await response.json()
+        console.log(data)
+        setBlog(data)
             setLoading(false)
-
-        } else {
-            console.log("Error")
-            setLoading(false)
-        }
+            console.log("inside single",post)   
 
     }
     useEffect(() => {
         getNewBlog()
-    }, [id])
-
-    // async function deletePost(){
-    //     let response = await fetch(apiURL+id,{
-    //         method:"DELETE",
-
-    //     })
-    //     console.log(response)
-    //     navigate('/')
-    //     toast.success("Deleted the post")
-    // }
+        dispatch(fetchThunkBlog(id))
+    }, [])
 
     
     function Loader() {
@@ -66,14 +53,14 @@ export default function SinglePage() {
             {loading? (<Loader/>):(<>
              
             <div className='p-8 border border-slate-100 m-10 rounded-lg h-fit  shadow-lg'>
-            <h1 className=" text-center text-6xl font-bold mt-3">{post.title}</h1>
-            <p className='text-right mr-10 text-light text-sm text-gray-400'>{post.createdAt}</p>
+            <h1 className=" text-center text-6xl font-bold mt-3">{blog.title}</h1>
+            <p className='text-right mr-10 text-light text-sm text-gray-400'>{blog.createdAt}</p>
 
 
 
 
              <div className=" w-full ">
-                {parse(`${post.body}`)}
+                {parse(`${blog.body}`)}
                 </div>
             </div>
             <div className='inline-flex ml-10 items-right'> 
@@ -82,7 +69,7 @@ export default function SinglePage() {
                 </svg>
                 <h3 >
 
-                {post.noOfLikes}</h3></div>
+                {blog.noOfLikes}</h3></div>
 
           
             </>)}
