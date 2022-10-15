@@ -22,7 +22,7 @@ export default function ProductCardDash(props) {
   return (
   
         
-        <div className="w-full h-full border border-transparent shadow-xl ml-4 mt-4 p-8 rounded-md flex flex-col justify-between hover:shadow-2xl hover:border hover:bg-slate-100 hover:bg-opacity-70 ">
+        <div className="w-full h-full border border-transparent shadow-xl ml-2 mt-2 p-4 rounded-md flex flex-col justify-between hover:shadow-2xl hover:border hover:bg-slate-100 hover:bg-opacity-70 ">
           <pre>
             <h3 className='text-lg font-bold  my-4'>{props.blog.title}</h3>
             <h3 className='text-sm my-4 truncate'>{parse(`${props.blog.body}`)}</h3>
