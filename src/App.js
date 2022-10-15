@@ -10,6 +10,7 @@ import Editors from './pages/Editor';
 import HomePage from './pages/HomePage';
 import SinglePage from './pages/SinglePage'
 import EditPost from './pages/EditPost';
+import AboutUs from './pages/AboutUs'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route index element={<HomePage/>}/>
         <Route path='/login' element={<Login />} />
+        <Route path='/aboutus' element={<AboutUs/>}/>
         
         {appContext.userLoggedIn ? (<Route path='/dashboard' element={<Dashboard />} />) : (<Route path='/login' element={<Login />} />)}
         {appContext.userLoggedIn ? (<Route path="/create" element={<Editors/>}/>) : (<Route path='/login' element={<Login />} />)}
