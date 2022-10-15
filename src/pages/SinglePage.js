@@ -94,8 +94,7 @@ export default function SinglePage() {
                     }}>Delete</button>
                 </div>) : ("")}
                 </div>
-                </div>
-                
+                </div>  
               
             </>)}
 
