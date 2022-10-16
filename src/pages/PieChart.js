@@ -24,17 +24,17 @@ function PieChart()
         count[0]++
       } else if(resData[i].category==="Health & Fitness")
   
-        count[1]++
+        count[4]++
         else if(resData[i].category==="Food")
      
-        count[2]++
+        count[1]++
         else if(resData[i].category==="Technology")
         
-        count[3]++
+        count[2]++
 
         else
        
-        count[4]++
+        count[3]++
     }
 
     console.log("Count:",count)
@@ -44,8 +44,9 @@ function PieChart()
       getPosts.push(resData[i].noOfPosts);
      } 
       getCategory = [...new Set(getCategory)] 
-   
+   console.log(getCategory)
      setCategory(getCategory);
+
      setPosts(count);
    }
  getdata();
