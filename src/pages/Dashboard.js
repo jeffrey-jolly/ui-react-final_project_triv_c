@@ -24,14 +24,8 @@ export default function Dashboard() {
   let [loading, setLoading] = useState(true);
   const apiURL = "http://localhost:3000/posts"
 
-  let [catCount, setCatCount] = useState({
-    entertainment:0,
-    health:0,
-    food:0,
-    tech:0,
-    yourspace:0
- })
-
+ let [Catcount,setCatCount]=useState(0)
+ let disCategory=[]
  
 
 
@@ -52,6 +46,15 @@ export default function Dashboard() {
     if (response.ok) {
       let result = await response.json()
       console.log("Result", result)
+      for(let i=0;i<result.length;i++){
+        disCategory.push(result[i].category)
+      }
+
+     disCategory = [...new Set(disCategory)]
+      console.log("Dist",disCategory)
+      setCatCount(disCategory.length)
+      console.log(Catcount)
+
       setBlogs(result)
 
       
@@ -199,7 +202,7 @@ export default function Dashboard() {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
                     </svg>
-                    <p className='ml-2'>CATEGORIES: <span className='font-semibold'>5</span></p>
+                    <p className='ml-2'>CATEGORIES: <span className='font-semibold'>{`${Catcount}`}</span></p>
                   </div>
                 </div>
               </section>
