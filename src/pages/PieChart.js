@@ -54,7 +54,7 @@ function PieChart()
     
     return(
         <React.Fragment>
-           <div className='border border-transparent shadow-lg  mt-4 p-1 rounded-md  justify-between '>
+           <div className='border border-transparent shadow-lg  mt-4 p-1 rounded-md  justify-between hover:shadow-2xl'>
             <div className="h-full w-full">
        {/*  <h1 className="mt-3 text-center">Posts with Category and Posts</h1> */}
             <div className="row">               

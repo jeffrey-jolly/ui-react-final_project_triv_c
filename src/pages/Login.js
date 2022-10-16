@@ -40,7 +40,7 @@ export default function Login() {
     <div className="flex p-6 rounded-lg shadow-lg bg-white max-w-sm my-20  mx-auto min-h-80 justify-center align-baseline">
   <form onSubmit={formik.handleSubmit}>
     <div className="form-group mb-6">
-      <label forhtml="exampleInputEmail2" ><b>USERNAME</b></label>
+      <label forhtml="exampleInputEmail2" className='mb-2'><b>USERNAME</b></label>
       <input type="name" className={`${formik.touched.name && formik.errors.name ? 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-red-500 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-hite focus:border-blue-600 focus:outline-none': 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-hite focus:border-blue-600 focus:outline-none'}`} 
              onChange={formik.handleChange}
               onBlur={formik.handleBlur} 
