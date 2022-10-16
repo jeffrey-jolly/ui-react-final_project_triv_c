@@ -53,7 +53,7 @@ export default function HomePage(){
                     <div className="relative h-1/4 w-1/2 m-5 shadow-2xl bg-gray-200">
                         <img src={back} className="h-100 w-full m-8 shadow-2xl opacity-100 "/>
                         <h1 className="absolute text-5xl text-white top-1/3 w-full  mt-20 ml-10 left-1/2 h-3/4 -translate-x-1/2 -translate-y-1/2 flex justify-evenly">
-                        <div className='w-full flex flex-col  justify-evenly overflow-hidden hover:overflow-y-scroll  p-4'>
+                        <div className='w-full h-80 mx-auto flex overflow-hidden hover:overflow-y-scroll p-2 my-auto flex-col justify-between'>
                             {loading? (<Loader/>):(
                                 blogs.map((blog)=>{
                                     return(

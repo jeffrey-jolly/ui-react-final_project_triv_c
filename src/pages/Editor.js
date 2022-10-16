@@ -9,7 +9,9 @@ export default function Editors() {
     const { quill, quillRef } = useQuill();
     const [values,setValues] = useState()
     let [title,setTitle] = useState("")
+    let [category, setCategory] = useState("")
     const navigate = useNavigate()
+
 
     React.useEffect(() => {
         if (quill) {
@@ -34,7 +36,7 @@ export default function Editors() {
             body: JSON.stringify({
                 
                 title: `${title}`,
-                categoryId:1,
+                category: `${category}`,
                 authorId:1,
                 noOfLikes:23,
                 createdAt:`${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`,
@@ -61,13 +63,34 @@ export default function Editors() {
   return (
     <div>
         <Header/>
-    <div className=" flex flex-col gap-y-4 space-y-2 mt-7">
+    <div className=" flex flex-col gap-y-2 space-y-1 mt-5">
+        <div className=' flex flex-wrap justify-center space-x-3'>
+            <div className=" w-80">
+                <input className="mx-auto border border-slate-600 rounded-md px-auto w-full h-10 text-center" type="text" placeholder="Add title" value={title}
+                onChange={(event)=>{
+                    setTitle(event.target.value)
+                    console.log(title)
+                }}></input>
 
-        <input className="mx-auto border border-slate-600 rounded-md px-auto w-1/2 h-10 text-center" type="text" placeholder="Add title" value={title}
-        onChange={(event)=>{
-            setTitle(event.target.value)
-            console.log(title)
-        }}></input>
+            </div>
+            
+            <div className=' ml-0 '>
+                <select className=' border border-slate-600 rounded-md px-auto text-left text-sm w-fit h-full' onChange={(event)=>{
+                    setCategory(event.target.value)
+                    console.log(event.target.value)
+                }}>
+                    <option>Entertainment</option>
+                    <option>Health & Fitness</option>
+                    <option>Food</option>
+                    <option>Technology</option>
+                    <option>Your space</option>
+
+                </select>
+
+            </div>
+           
+
+        </div>
 
         <div className=" mx-auto">
 
@@ -75,7 +98,7 @@ export default function Editors() {
         
         <div>
             
-            <div className="w-full h-96 mb-4 px-2 py-3">
+            <div className="w-full h-96 mb-8 px-2 py-3">
                 <div ref={quillRef} />
             </div>
             
