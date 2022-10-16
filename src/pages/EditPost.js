@@ -133,10 +133,11 @@ export default function Editors() {
                         </div>
 
                         <div className=' ml-0 '>
-                            <select className=' border border-slate-600 rounded-md px-auto text-left text-sm w-fit h-full' value={category} onChange={(event) => {
+                            <select className=' border border-slate-600 rounded-md px-auto text-left text-sm w-fit h-full' value={category} required onChange={(event) => {
                                 setCategory(event.target.value)
                                 console.log(event.target.value)
                             }}>
+                                <option>Choose a category</option>
                                 <option>Entertainment</option>
                                 <option>Health & Fitness</option>
                                 <option>Food</option>

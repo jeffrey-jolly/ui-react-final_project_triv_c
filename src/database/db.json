@@ -11,7 +11,7 @@
     },
     {
       "title": "Marvel News",
-      "category": "",
+      "category": "Entertainment",
       "authorId": 1,
       "noOfLikes": 23,
       "createdAt": "16/10/2022",
@@ -44,6 +44,15 @@
       "createdAt": "16/10/2022",
       "body": "<p>I feel gooood :)</p>",
       "id": 17
+    },
+    {
+      "title": "Cartoon network",
+      "category": "Entertainment",
+      "authorId": 1,
+      "noOfLikes": 23,
+      "createdAt": "16/10/2022",
+      "body": "<p>They turn 30</p>",
+      "id": 18
     }
   ]
 }
