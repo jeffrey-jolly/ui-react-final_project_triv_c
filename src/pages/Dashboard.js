@@ -32,6 +32,8 @@ export default function Dashboard() {
     yourspace:0
  })
 
+ 
+
 
   async function deletePost(val){
     let response = await fetch(apiURL+'/'+val,{
@@ -52,20 +54,6 @@ export default function Dashboard() {
       console.log("Result", result)
       setBlogs(result)
 
-      for(let i=0;i<result.length;i++){
-        if(result[i].category==="Entertainment"){
-          setCatCount({...catCount,entertainment:1})
-        } else if(result[i].category==="Health & Fitness")
-          setCatCount({...catCount, health:catCount.health+1})
-          else if(result[i].category==="Food")
-          setCatCount({...catCount, food:catCount.food+1})
-          else if(result[i].category==="Technology")
-          setCatCount({...catCount, tech:catCount.tech+1})
-          else
-          setCatCount({...catCount, yourspace:catCount.yourspace+1})
-      }
-      // console.log(result[1], "Result 1")
-      console.log(catCount)
       
       setLoading(false)
 

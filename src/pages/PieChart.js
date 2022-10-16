@@ -7,22 +7,46 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 function PieChart()
 {
-  const [ids, setIds]= useState([]);
-  const [likes, setLikes]=useState([]);
+  const [Category, setCategory]= useState([]);
+  const [Posts, setPosts]=useState([]);
+  let count = [0,0,0,0,0]
   useEffect( ()=>{
-    const getids=[];
-    const getLikes=[];
+    let getCategory=[];
+    const getPosts=[];
    const getdata= async()=>{
      const reqData= await fetch("http://localhost:3000/posts");
      const resData= await reqData.json();
      console.log(resData);
+     
+     for(let i=0;i<resData.length;i++){
+      if(resData[i].category==="Entertainment"){
+
+        count[0]++
+      } else if(resData[i].category==="Health & Fitness")
+  
+        count[1]++
+        else if(resData[i].category==="Food")
+     
+        count[2]++
+        else if(resData[i].category==="Technology")
+        
+        count[3]++
+
+        else
+       
+        count[4]++
+    }
+
+    console.log("Count:",count)
      for(let i=0; i<resData.length; i++)
      {
-      getids.push(resData[i].id);
-      getLikes.push(resData[i].noOfLikes);
-     }     
-     setIds(getids);
-     setLikes(getLikes);
+      getCategory.push(resData[i].category);
+      getPosts.push(resData[i].noOfPosts);
+     } 
+      getCategory = [...new Set(getCategory)] 
+   
+     setCategory(getCategory);
+     setPosts(count);
    }
  getdata();
   },[]);
@@ -31,20 +55,20 @@ function PieChart()
         <React.Fragment>
            <div className='border border-transparent shadow-lg  mt-4 p-1 rounded-md  justify-between '>
             <div className="h-full w-full">
-       {/*  <h1 className="mt-3 text-center">Posts with ids and likes</h1> */}
+       {/*  <h1 className="mt-3 text-center">Posts with Category and Posts</h1> */}
             <div className="row">               
-                <div className="col-md-5  ml-5 wht ">
+                <div className="col-md-5  ml-5 wht">
             <Doughnut
               // width={50}
               // height={50}
 
                 data={{   
                                                   
-                labels: ids,
+                labels: Category,
                 datasets: [
                     {
-                      label: '# of Likes',
-                      data: likes,
+                      label: '# of posts',
+                      data: Posts,
                       backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -83,7 +107,7 @@ function PieChart()
                 plugins:{
                     title:{
                         fontSize: 30,
-                       text:'Number of Likes/post',
+                       text:'Number of Posts/Category',
                         display: true ,
                         font:{ size:22}   
                     },
