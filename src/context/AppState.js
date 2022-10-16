@@ -7,7 +7,7 @@ export default function AppState(props) {
     let credential = {user_name:"TeamC",password:"t3amc"}
     let [userLoggedIn,setUserLoggedIn] = useState(checkLSStatus())
     let [count, setCount] = useState(checkViewStatus())
-
+    
     function checkLSStatus(){
         if(localStorage.getItem('login_status')){
           return JSON.parse(localStorage.getItem('login_status'))

@@ -24,6 +24,15 @@ export default function Dashboard() {
   let [loading, setLoading] = useState(true);
   const apiURL = "http://localhost:3000/posts"
 
+  let [catCount, setCatCount] = useState({
+    entertainment:0,
+    health:0,
+    food:0,
+    tech:0,
+    yourspace:0
+ })
+
+
   async function deletePost(val){
     let response = await fetch(apiURL+'/'+val,{
         method:"DELETE",
@@ -42,6 +51,22 @@ export default function Dashboard() {
       let result = await response.json()
       console.log("Result", result)
       setBlogs(result)
+
+      for(let i=0;i<result.length;i++){
+        if(result[i].category==="Entertainment"){
+          setCatCount({...catCount,entertainment:1})
+        } else if(result[i].category==="Health & Fitness")
+          setCatCount({...catCount, health:catCount.health+1})
+          else if(result[i].category==="Food")
+          setCatCount({...catCount, food:catCount.food+1})
+          else if(result[i].category==="Technology")
+          setCatCount({...catCount, tech:catCount.tech+1})
+          else
+          setCatCount({...catCount, yourspace:catCount.yourspace+1})
+      }
+      // console.log(result[1], "Result 1")
+      console.log(catCount)
+      
       setLoading(false)
 
     } else {

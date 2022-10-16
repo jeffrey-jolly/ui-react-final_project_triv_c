@@ -53,6 +53,15 @@
       "createdAt": "16/10/2022",
       "body": "<p>They turn 30</p>",
       "id": 18
+    },
+    {
+      "title": "Water",
+      "category": "Health & Fitness",
+      "authorId": 1,
+      "noOfLikes": 23,
+      "createdAt": "16/10/2022",
+      "body": "<p>Water</p>",
+      "id": 19
     }
   ]
 }
