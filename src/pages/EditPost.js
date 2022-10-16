@@ -10,9 +10,10 @@ export default function Editors() {
     const { quill, quillRef } = useQuill();
     let [blog, setBlog] = useState([])
     let [title, setTitle] = useState()
-    let [body,setBody] = useState()
+    let [body, setBody] = useState()
+    let [category, setCategory] = useState()
     let { id } = useParams()
-    let [loading,setLoading]=useState(true)
+    let [loading, setLoading] = useState(true)
 
     let url = "http://localhost:3000/posts/"
     const navigate = useNavigate()
@@ -25,13 +26,14 @@ export default function Editors() {
         setBlog(result)
         setTitle(result.title)
         setBody(result.body)
+        setCategory(result.category)
         setLoading(false)
         console.log(result.body)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getPost()
-    },[id])
+    }, [id])
 
     React.useEffect(() => {
         if (quill) {
@@ -44,22 +46,23 @@ export default function Editors() {
         }
     }, [quill]);
 
-   
 
-    useEffect(()=>{
-        if(quill){
-            quill.root.innerHTML = `${blog.body}` 
+
+    useEffect(() => {
+        if (quill) {
+            quill.root.innerHTML = `${blog.body}`
         }
-    },[quill])
+    }, [quill])
 
-    
+
     let addPost = async () => {
         let response = await fetch(url + id, {
             method: "PATCH",
             body: JSON.stringify({
 
                 title: `${title}`,
-                body: `${body}`
+                body: `${body}`,
+                category: `${category}`
 
             }),
 
@@ -77,23 +80,23 @@ export default function Editors() {
 
     function Loader() {
         return (
-          <>
-            <img src={loadingGif} alt="Loading" className="w-64 mx-auto mt-56" />
-          </>
+            <>
+                <img src={loadingGif} alt="Loading" className="w-64 mx-auto mt-56" />
+            </>
         );
     }
-   
+
     // console.log(values, "this is value var")
 
 
 
     return (
-        
+
         <div>
-            <Header/>
-        <div className=" flex flex-col gap-y-4 space-y-2 mt-7">
-            {loading?(<><Loader/></>):(<>
-                <input className="mx-auto border border-slate-600 rounded-md px-auto w-1/2 h-10 text-center" type="text" placeholder="Add title" value={title}
+            <Header />
+            <div className=" flex flex-col gap-y-2 space-y-1 mt-5">
+                {loading ? (<><Loader /></>) : (<>
+                    {/* <input className="mx-auto border border-slate-600 rounded-md px-auto w-1/2 h-10 text-center" type="text" placeholder="Add title" value={title}
                 onChange={(event) => {
                     setTitle(event.target.value)
                     console.log(title)
@@ -116,11 +119,62 @@ export default function Editors() {
             <button className="mx-auto border-2 border-slate-200 rounded-lg px-2 bg-slate-200 shadow-lg" onClick={
                 addPost}>
                 Submit
-            </button>
-            </>)}
+            </button> */}
 
-            
-        </div>
+
+                    <div className=' flex flex-wrap justify-center space-x-3'>
+                        <div className=" w-80">
+                            <input className="mx-auto border border-slate-600 rounded-md px-auto w-full h-10 text-center" type="text" placeholder="Add title" value={title}
+                                onChange={(event) => {
+                                    setTitle(event.target.value)
+                                    console.log(title)
+                                }}></input>
+
+                        </div>
+
+                        <div className=' ml-0 '>
+                            <select className=' border border-slate-600 rounded-md px-auto text-left text-sm w-fit h-full' value={category} required onChange={(event) => {
+                                setCategory(event.target.value)
+                                console.log(event.target.value)
+                            }}>
+                                <option>Choose a category</option>
+                                <option>Entertainment</option>
+                                <option>Health & Fitness</option>
+                                <option>Food</option>
+                                <option>Technology</option>
+                                <option>Your space</option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+                    <div className=" mx-auto">
+
+                        <Toaster />
+
+                        <div>
+
+                            <div className="w-full h-96 mb-8 px-2 py-3">
+                                <div ref={quillRef} />
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <button className="mx-auto border-2 border-slate-200 rounded-lg px-2 bg-slate-200 shadow-lg" onClick={
+                        addPost}>
+                        Submit
+                    </button>
+
+                </>)}
+
+
+            </div>
         </div>
 
     )
