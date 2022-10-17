@@ -82,7 +82,7 @@ export default function Dashboard() {
         
         
 
-      <div className="flex flex-row w-full max-h-full">
+      <div className="flex flex-row w-full max-h-full ">
           <div className="text-xl bg-black max-h-full w-1/6 shadow-2xl text-white  flex flex-col align-bottom justify-between p-2">
 
             <ul className="top-nav text-base">
