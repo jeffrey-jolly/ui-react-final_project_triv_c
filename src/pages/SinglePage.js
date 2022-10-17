@@ -20,16 +20,17 @@ export default function SinglePage() {
     const dispatch = useDispatch()
 
     let { post } = useSelector(state => state)
+    console.log("post first",post)
 
 
     async function getNewBlog() {
 
         let response = await fetch(`${apiURL}` + id)
         let data = await response.json()
-        console.log(data)
+        // console.log(data)
         setBlog(data)
         setLoading(false)
-        console.log("inside single", post)
+        // console.log("inside single", post)
 
     }
     useEffect(() => {
@@ -44,7 +45,7 @@ export default function SinglePage() {
 
         })
 
-        console.log(response)
+        // console.log(response)
         toast.success("Deleted the post")
         navigate('/dashboard')
 
@@ -65,14 +66,14 @@ export default function SinglePage() {
             {loading ? (<Loader />) : (<>
               
                 <div className='p-8 border border-slate-100 m-10 rounded-lg h-fit  shadow-lg'>
-                    <h1 className=" text-center text-6xl font-bold mt-3">{blog.title}</h1>
-                    <p className='text-right mr-10 text-light text-sm text-gray-400'>{blog.createdAt}</p>
+                    <h1 className=" text-center text-6xl font-bold mt-3">{post.post && post.post.title}</h1>
+                    <p className='text-right mr-10 text-light text-sm text-gray-400'>{post.post && post.post.createdAt}</p>
 
 
 
 
                     <div className=" w-full ">
-                        {parse(`${blog.body}`)}
+                        {parse(`${post.post && post.post.body}`)}
                     </div>
                 </div>
                 <div className='flex justify-between'>
@@ -83,7 +84,7 @@ export default function SinglePage() {
                         </svg>
                         <h3 >
 
-                            {blog.noOfLikes}</h3></div></div>
+                            {post.noOfLikes}</h3></div></div>
                 <div className='mr-10'>
                 {appContext.userLoggedIn ? (<div className='inline-flex ml-3 gap-2 text-md font-semibold'>
                     <button className='rounded-2xl border border-gray-500 p-2 hover:text-white hover:bg-black hover:border-gray-300' onClick={() => {
