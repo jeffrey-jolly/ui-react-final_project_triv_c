@@ -7,6 +7,7 @@ import back from '../Images/Leaves.jpg'
 import ProductCard from './ProductCard';
 import loadingGif from '../Images/tenor.gif'
 import AppContext from '../context/AppContext';
+
 export default function HomePage() {
 
     let [loading, setLoading] = useState(true);
@@ -14,7 +15,7 @@ export default function HomePage() {
     let appContext = useContext(AppContext)
     let [searchValue, setSearchValue] = useState("")
     let [newBlog,setNewBlog] = useState([])
-
+    let datab = []
     let [blogs, setBlogs] = useState([])
     const apiURL = "http://localhost:3000/posts"
 
@@ -42,12 +43,22 @@ export default function HomePage() {
             // console.log(blog.body)
             // console.log(blog.title)
             console.log("Blog:",blog)
-            setNewBlog(blog)
+            datab.push(blog)
+            // setNewBlog(...newBlog,blog)
+         
         })
-        console.log(newBlog)
+        console.log("pushed",datab)
+        // setSearchValue("")
+        setNewBlog(datab)
+       
+     
+        
     }
+  
     useEffect(() => {
         getNewBlog()
+        getSearch()
+       
     }, [])
 
 
@@ -68,9 +79,11 @@ export default function HomePage() {
                                 <h1 className="absolute text-5xl text-white top-1/3 w-full  mt-20 ml-10 left-1/2 h-3/4 -translate-x-1/2 -translate-y-1/2 flex justify-evenly">
                                     <div className='w-full h-80 mx-auto flex overflow-hidden hover:overflow-y-scroll p-2 my-auto flex-col justify-between'>
                                         {loading ? (<Loader />) : (
-                                            blogs.map((blog) => {
+                                         
+                                           ( newBlog.length>0?(newBlog):(blogs)).map((blog) => {
                                                 return (
                                                     <ProductCard key={blog.id} blog={blog} />
+                                                    
                                                 )
                                             })
                                         )}
@@ -80,7 +93,8 @@ export default function HomePage() {
                             <div className='flex flex-col ml-14 items-center justify-center  gap-y-2'>
                                 <div className='inline-flex gap-x-2 border border-black rounded-lg p-2 '>
                                     <input type="text" placeholder="Search" className='rounded-md w-fit border border-gray-400 px-2' value={searchValue} onChange={(event)=>{setSearchValue(event.target.value)
-                                    console.log("search",searchValue)
+                                    console.log("search",searchValue && searchValue)
+                                    // getSearch()
                                     }}></input>
                                     <button className='border border-slate-200 rounded-full p-2 w-fit hover:bg-black hover:text-white' type="submit" onClick={getSearch}>Search</button>
                                 </div>
