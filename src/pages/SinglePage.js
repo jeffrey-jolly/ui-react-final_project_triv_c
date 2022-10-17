@@ -45,7 +45,7 @@ export default function SinglePage() {
 
         })
 
-        // console.log(response)
+        console.log(response)
         toast.success("Deleted the post")
         navigate('/dashboard')
 
