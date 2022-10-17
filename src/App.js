@@ -11,6 +11,7 @@ import HomePage from './pages/HomePage';
 import SinglePage from './pages/SinglePage'
 import EditPost from './pages/EditPost';
 import AboutUs from './pages/AboutUs'
+import Category from './pages/Category';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         {appContext.userLoggedIn ? (<Route path="/create" element={<Editors/>}/>) : (<Route path='/login' element={<Login />} />)}
         <Route path='/single-page/:id' element={<SinglePage/>}/>
         <Route path='/edit/:id' element={<EditPost/>}/>
+        <Route path='/category/:category' element={<Category/>}/>
         
       </Routes>
 

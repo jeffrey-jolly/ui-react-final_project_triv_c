@@ -134,12 +134,12 @@ export default function Dashboard() {
                 <span>
                   Categories
                 </span>
-                <div class="dropdown-content">
-                <a href="#">Entertainment</a>
-               <a href="#">Food</a>
-               <a href="#">Technology</a>
-               <a href="#">Your Space</a>
-               <a href="#">Health and Fitness</a>
+                <div class="dropdown-content text-xs p-2 font-light">
+              <Link to='/category/Entertainment'>Entertainment</Link>  
+              <Link to='/category/Food'>Food</Link> 
+              <Link to='/category/Technology'>Technology</Link> 
+               <Link to={`/category/{Your%20Space}`}>Your Space</Link>
+               <Link to='/category/Health%20&%20Fitness'>Health & Fitness</Link>
   
                   
                   </div>
