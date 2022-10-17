@@ -57,9 +57,9 @@ export default function HomePage() {
   
     useEffect(() => {
         getNewBlog()
-        getSearch()
+        
        
-    }, [])
+    }, [searchValue])
 
 
 
